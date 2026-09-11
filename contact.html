@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Owen Maddox Media</title>
+<meta name="description" content="Book game-day or team photography coverage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html"><img src="logo.png" alt="Owen Maddox Media" class="logo-img"></a>
+    <div class="nav-links">
+      <a href="index.html">Sports</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="wrap contact-section">
+  <h1>Book coverage</h1>
+
+  <!--
+    NETLIFY FORMS: this form is submitted by Netlify itself when the site is deployed there
+    (data-netlify="true" + the hidden form-name field below is how Netlify detects it at
+    deploy time — no backend or third-party service needed). Submissions show up under
+    Site settings -> Forms in the Netlify dashboard, and you can set the notification email
+    there too (Site settings -> Forms -> Form notifications) — it isn't set in this code.
+  -->
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+    <input type="hidden" name="form-name" value="contact">
+    <p hidden>
+      <label>Don't fill this out if you're human: <input name="bot-field"></label>
+    </p>
+    <div class="field-row">
+      <div>
+        <label for="name">Name</label>
+        <input id="name" name="Name" type="text" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" required>
+      </div>
+    </div>
+    <div class="field-row">
+      <div>
+        <label for="school">School / Team</label>
+        <input id="school" name="School or Team" type="text">
+      </div>
+      <div>
+        <label for="sport">Sport</label>
+        <input id="sport" name="Sport" type="text">
+      </div>
+    </div>
+    <div>
+      <label for="date">Game / Event Date</label>
+      <input id="date" name="Date" type="date">
+    </div>
+    <div>
+      <label for="message">Details</label>
+      <textarea id="message" name="Message" placeholder="Location, coverage length, anything else useful"></textarea>
+    </div>
+    <div class="submit-row">
+      <button type="submit" class="btn btn-solid">Send Inquiry</button>
+    </div>
+  </form>
+
+  <p class="contact-alt">Prefer Instagram? <a href="https://www.instagram.com/shot.by.owenn/" target="_blank" rel="noopener">DM @shot.by.owenn</a></p>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-small">© <span id="year"></span> Owen Maddox Media</div>
+    <a href="https://www.instagram.com/shot.by.owenn/" target="_blank" rel="noopener" class="foot-instagram"><img src="instagram.png" alt="Instagram"></a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

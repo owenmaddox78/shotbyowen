@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Maddox Media — Sports</title>
+<meta name="description" content="Game-day and team photography for local high school and club sports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html"><img src="logo.png" alt="Owen Maddox Media" class="logo-img"></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Sports</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="gallery-section">
+  <!--
+    GALLERY: full-bleed editorial mosaic — tiles are deliberately different sizes so the
+    page reads like a curated layout instead of a uniform grid. Each .tile is a placeholder.
+
+    To use a real photo, replace the inner <div class="tile-ph">...</div> with:
+    <img src="photos/your-file.jpg" alt="Description of the shot">
+
+    To change a tile's size, swap its size class for one of:
+      g-large    (big, spans 4 of 6 columns, 2 rows tall — use for your strongest shots)
+      g-wide     (spans 4 columns, 1 row — good for landscape/action shots)
+      g-tall     (spans 2 columns, 2 rows — good for portrait-orientation shots)
+      g-portrait (spans 2 columns, 3 rows — a fully vertical tile for tall portrait shots)
+      g-normal   (spans 2 columns, 1 row — the smallest tile)
+    Mix them in any order — grid-auto-flow: dense (in styles.css) fills gaps automatically.
+    Edit data-sport / data-cap to control the caption shown on hover and in the lightbox.
+  -->
+  <div class="gallery">
+    <div class="tile g-large" data-sport="Softball" data-cap="Willow Glen HS vs Gilroy — May 13 2026"><img src="photos/Softball.01.jpg" alt="Softball player throwing a ball"></div>
+    <div class="tile g-portrait" data-sport="Soccer" data-cap="Willow Glen HS vs Westmont — February 12 2026"><img src="photos/Soccer.01.jpg" alt="A player running towards the action"></div>
+    <div class="tile g-normal" data-sport="Volleyball" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Volleyball</div></div>
+    <div class="tile g-wide" data-sport="Soccer" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Soccer</div></div>
+    <div class="tile g-normal" data-sport="Track &amp; Field" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Track &amp; Field</div></div>
+    <div class="tile g-portrait" data-sport="Lacrosse" data-cap="Willow Glen HS vs Ann Sobrato — May 6 2026"><img src="photos/Lacrosse.01.jpg" alt="Two girls at the lacrosse faceoff"></div>
+    <div class="tile g-normal" data-sport="Basketball" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Basketball</div></div>
+    <div class="tile g-large" data-sport="Soccer" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Soccer</div></div>
+    <div class="tile g-normal" data-sport="Volleyball" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Volleyball</div></div>
+    <div class="tile g-normal" data-sport="Basketball" data-cap="Add caption"><div class="tile-ph">Replace with photo</div><div class="tile-cap">Basketball</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-small">© <span id="year"></span> Owen Maddox Media</div>
+    <a href="https://www.instagram.com/shot.by.owenn/" target="_blank" rel="noopener" class="foot-instagram"><img src="instagram.png" alt="Instagram"></a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">Close ✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-ph" id="lightboxImg">Replace with photo</div>
+    <p class="lightbox-cap" id="lightboxCap"></p>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
