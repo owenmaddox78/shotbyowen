@@ -4,6 +4,7 @@
   --ink: #1A1A1A;
   --ink-dim: #6E6E6B;
   --line: #E4E4E1;
+  --line-strong: #8C8C89;
   --maxw: 1100px;
 }
 *{box-sizing:border-box;}
@@ -43,7 +44,7 @@ header{
 /*
   LOGO: drop your logo file in this folder (e.g. logo.png or logo.svg) and replace the
   placeholder <div class="logo-slot"> below with:
-  <a href="index.html"><img src="logo.jpg" alt="Owen Maddox Media" class="logo-img"></a>
+  <a href="index.html"><img src="logo.png" alt="Owen Maddox Media" class="logo-img"></a>
 */
 .logo-slot{
   display:flex; align-items:center; justify-content:center;
@@ -51,7 +52,7 @@ header{
   border:1px dashed var(--line);
   font-size:11px; color:var(--ink-dim); text-align:center;
 }
-.logo-img{max-height:88px; width:auto;}
+.logo-img{max-height:56px; width:auto;}
 .nav-links{display:flex; gap:30px; align-items:center;}
 .nav-links a{font-size:14px; color:var(--ink-dim); transition:color 0.15s ease;}
 .nav-links a:hover{color:var(--ink);}
@@ -71,13 +72,8 @@ header{
 
 section{padding:64px 0;}
 
-/* ---------- GALLERY ----------
-   Full-bleed editorial mosaic: tiles are different sizes/aspect ratios on purpose
-   (like a curated print layout, not a uniform grid). Mix .g-large / .g-wide / .g-tall /
-   .g-normal freely on the tiles in index.html to change the rhythm of the page —
-   grid-auto-flow: dense fills in gaps automatically so the order doesn't have to be exact.
-*/
 .gallery-section{padding:40px 0;}
+.gallery-kicker{font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-dim); text-align:center; margin:0 0 20px;}
 .gallery{
   max-width:1400px;
   margin:0 auto;
@@ -116,23 +112,20 @@ section{padding:64px 0;}
   font-size:12px; color:#fff;
   opacity:0; transition:opacity 0.15s ease;
 }
-.tile:hover .tile-cap{opacity:1;}
+.tile:hover .tile-cap, .tile:focus-visible .tile-cap{opacity:1;}
 
 /* ---------- ABOUT ---------- */
 section.wrap{padding-top:64px; padding-bottom:64px;}
-.about-grid{display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:center;}
+.about-grid{display:grid; grid-template-columns:420px 1fr; gap:44px; align-items:center;}
 .about-frame{
-  aspect-ratio:1/1;
-  background:#EAEAE7;
-  border:1px solid var(--line);
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  color:var(--ink-dim); font-size:11px; text-align:center; padding:16px;
+  aspect-ratio:2/3;
+  overflow:hidden;
 }
-.about-copy h1{font-size:22px; font-weight:600; margin:0 0 14px;}
-.about-copy p{font-size:15px; color:var(--ink-dim); margin-bottom:14px;}
-.about-copy p:last-of-type{margin-bottom:0;}
-.about-copy strong{color:var(--ink);}
+.about-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+.about-heading{font-size:22px; font-weight:600; margin:0 0 14px;}
+.about-text p{font-size:15px; color:var(--ink-dim); margin-bottom:14px;}
+.about-text p:last-of-type{margin-bottom:0;}
+.about-text strong{color:var(--ink);}
 .about-ctas{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap;}
 
 /* ---------- CONTACT ---------- */
@@ -145,7 +138,7 @@ label{font-size:12px; font-weight:600; color:var(--ink-dim); margin-bottom:6px; 
 input, textarea{
   width:100%;
   background:var(--bg);
-  border:1px solid var(--line);
+  border:1px solid var(--line-strong);
   padding:11px 12px;
   color:var(--ink);
   font-family:inherit; font-size:14px;
@@ -210,10 +203,20 @@ footer{margin-top:40px; padding:40px 0; border-top:1px solid var(--line);}
 @media (max-width: 760px){
   .nav-links{gap:16px;}
   .nav-links a{font-size:13px;}
-  .logo-img{max-height:56px;}
+  .logo-img{max-height:40px;}
   .gallery{grid-template-columns:repeat(2, 1fr); grid-auto-rows:60vw;}
   .tile, .tile.g-large, .tile.g-wide, .tile.g-tall, .tile.g-normal{grid-column:span 2; grid-row:span 1;}
-  .about-grid{grid-template-columns:1fr; text-align:center; justify-items:center;}
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+    text-align:center;
+    justify-items:center;
+  }
+  .about-copy{display:contents;}
+  .about-heading{order:1;}
+  .about-frame{order:2; margin-bottom:16px;}
+  .about-text{order:3;}
+  .about-ctas{order:4;}
   .about-ctas{justify-content:center;}
   .field-row{grid-template-columns:1fr;}
   .wrap{padding:0 20px;}

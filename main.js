@@ -8,7 +8,9 @@ if (lightbox) {
   const lightboxPrev = document.getElementById('lightboxPrev');
   const lightboxNext = document.getElementById('lightboxNext');
   const tiles = Array.from(document.querySelectorAll('.tile'));
+  const focusables = [lightboxClose, lightboxPrev, lightboxNext];
   let currentIndex = 0;
+  let lastFocused = null;
 
   function showTile(index){
     currentIndex = (index + tiles.length) % tiles.length;
@@ -26,14 +28,30 @@ if (lightbox) {
     lightboxCap.textContent = sport ? (sport + (cap ? ' — ' + cap : '')) : cap;
   }
 
+  function openLightbox(index, triggerEl){
+    lastFocused = triggerEl;
+    showTile(index);
+    lightbox.classList.add('open');
+    lightboxClose.focus();
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    if (lastFocused) lastFocused.focus();
+  }
+
   tiles.forEach((tile, index) => {
-    tile.addEventListener('click', () => {
-      showTile(index);
-      lightbox.classList.add('open');
+    tile.setAttribute('tabindex', '0');
+    tile.setAttribute('role', 'button');
+    tile.addEventListener('click', () => openLightbox(index, tile));
+    tile.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(index, tile);
+      }
     });
   });
 
-  function closeLightbox(){ lightbox.classList.remove('open'); }
   lightboxClose.addEventListener('click', closeLightbox);
   lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showTile(currentIndex - 1); });
   lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showTile(currentIndex + 1); });
@@ -43,5 +61,16 @@ if (lightbox) {
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') showTile(currentIndex - 1);
     if (e.key === 'ArrowRight') showTile(currentIndex + 1);
+    if (e.key === 'Tab') {
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 }
